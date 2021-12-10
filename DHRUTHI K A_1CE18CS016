@@ -1,0 +1,199 @@
+Write a program to display a solid and hollow rectangle.
+ ***** *****
+ ***** * *
+ ***** *****
+ 
+ for i in range(1,4):
+    for j in range(1,6):
+        print("*",end="")
+    print()
+    
+    row=int(input("Enter the no of rows"))
+col=row+2
+for i in range(row):
+    for j in range(col):
+        if i==0 or i==(row-1) or j==0 or j==(col-1):
+            print("*",end="")
+        else:
+            print(" ",end="")
+    print()
+    
+    
+    Find the sum of digits of a number using recursion.
+    
+    def SumOfDigits(inputNumber):
+    if(inputNumber==0):
+        return 0
+    else:
+        return(inputNumber%10+SumOfDigits(int(inputNumber/10)))
+inputNumber=int(input("Enter the input number"))
+print("Sum of",inputNumber,"is",SumOfDigits(inputNumber))
+
+
+Write a program to REVERSE the number?
+
+
+num=1234
+reversed_num=0
+while num!=0:
+    digit=num%10
+    reversed_num=reversed_num*10+digit
+    num//=10
+print("Reversed Number:"+str(reversed_num))
+
+Find the sum of squares of first N odd natural numbers.
+
+def SquareSum(n):
+    sum=0
+    for i in range(1,n+1):
+        sum+=(2*i-1)*(2*i-1)
+    return sum
+n=8
+print(SquareSum(n))
+
+
+Write a program for ZIP, ZAP and ZOOM game:
+1. If the number is multiple of 3 to display “ZIP”
+2. If the number is multiple of 5 to display “ZAP”
+3. If the number is multiple of 3 and 5 to display “ZOOM”
+4. If it does not satisfy any of the above conditions, display “INVALID"
+
+def myFunc(Num):
+     
+    if Num % 3 == 0 and Num % 5 == 0 :
+        return "Zoom"
+         
+    elif Num % 3 == 0 :
+        return "Zip"
+     
+    elif Num % 5 == 0 :
+        return "Zap"
+         
+    else :
+        return "invalid"
+   
+n=int(input("Enter any number to find zip, zap, zoom :- "))
+print("The entered number is :- " , 
+      myFunc(n)) 
+      
+      
+ Write a program to remove vowels from string.
+ 
+ 
+ def removeVowels(string):
+    vowel = 'aeiou'
+    for ch in string.lower():
+        if ch in vowel:
+            string = string.replace(ch, '')
+
+    print(string)
+  
+string = input('Enter any string: ')
+
+removeVowels(string)
+
+Write a program to display number of LOWERCASE, UPPERCASE, SPECIAL 
+SYMBOLS, SPACES and DIGITS in a STRING?
+
+
+def Count(str):
+    upper, lower, number, special = 0, 0, 0, 0
+    for i in range(len(str)):
+        if str[i].isupper():
+            upper += 1
+        elif str[i].islower():
+            lower += 1
+        elif str[i].isdigit():
+            number += 1
+        else:
+            special += 1
+    print('Upper case letters:', upper)
+    print('Lower case letters:', lower)
+    print('Number:', number)
+    print('Special characters:', special)
+ 
+str = "#dhruthi01from@computerscience07"
+Count(str)
+
+
+Write a program to insert an element into existing array in a specified position?
+
+def insert_specific_position(x, n_list, pos):
+    return n_list[:pos-1]+[x]+n_list[pos-1:]
+n_list = [1,1,2,3,4,4,5,1]
+print("Original list:") 
+print(n_list)
+kth_position = 3
+x = 12
+result = insert_specific_position(x, n_list, kth_position)
+print("\nAfter inserting an element at kth position in the said list:")
+print(result)
+
+
+Given an array of numbers, write a function to move all zeroes to the end of it while 
+maintaining the non-zero elements.
+
+
+def pushZerosToEnd(arr, n):
+    count = 0 
+    for i in range(n):
+        if arr[i] != 0:
+            arr[count] = arr[i]
+            count+=1
+    while count < n:
+        arr[count] = 0
+        count += 1
+arr = [1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9]
+n = len(arr)
+pushZerosToEnd(arr, n)
+print("Array after pushing all zeros to end of array:")
+print(arr)
+
+
+Write program to display distinct elements from given two arrays?
+
+
+def printUncommon(arr1, arr2, n1, n2) :
+     
+    i = 0
+    j = 0
+    k = 0
+    while (i < n1 and j < n2) :
+ 
+        if (arr1[i] < arr2[j]) :
+            print( arr1[i] , end= " ")
+            i = i + 1
+            k = k + 1
+             
+        elif (arr2[j] < arr1[i]) :
+            print( arr2[j] , end= " ")
+            k = k + 1
+            j = j + 1
+ 
+        else :
+            i = i + 1
+            j = j + 1
+     
+    while (i < n1) :
+        print( arr1[i] , end= " ")
+        i = i + 1
+        k = k + 1
+     
+    while (j < n2) :
+        print( arr2[j] , end= " ")
+        j = j + 1
+        k = k + 1
+  
+  
+arr1 = [10, 20, 30]
+arr2 = [20, 25, 30, 40, 50]
+ 
+n1 = len(arr1)
+n2 = len(arr2)
+ 
+printUncommon(arr1, arr2, n1, n2)
+
+
+
+
+
