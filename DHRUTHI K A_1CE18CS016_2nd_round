@@ -1,0 +1,274 @@
+Suppose you have given the stock prices for respective days like (100, 180, 260, 310, 40, 535, 695). The stock price for the 1st day is 100, the 2nd day it is 180 and so on. Write a program to determine what days the user should buy and sell the stocks to get the maximum profit
+def stockBuySell(price, n):
+    if (n == 1):
+        return
+    i = 0
+    while (i < (n - 1)):
+        while ((i < (n - 1)) and
+                (price[i + 1] <= price[i])):
+            i += 1
+        if (i == n - 1):
+            break
+        buy = i
+        i += 1
+        while ((i < n) and (price[i] >= price[i - 1])):
+            i += 1
+        sell = i - 1
+         
+        print("Buy on day: ",buy,"\t",
+                "Sell on day: ",sell)
+price = [100, 180, 260, 310, 40, 535, 695]
+n = len(price)
+stockBuySell(price, n)
+
+The characters in the string should be sorted based on the following conditions.
+i) Sort the characters in the string by their frequency of occurrences (the number of times characters have occurred in the string).
+ii) If the two different characters have the same frequency, these letters should be sorted based on their alphabetical order.
+[Example: Input: Success Output: euccsss]
+
+def countFrequency(string ,  ch) :
+    count = 0;
+    for i in range(len(string)) :
+        if (string[i] == ch) :
+            count += 1;
+    return count;
+def sortArr(string) :
+    n = len(string);
+    vp = [];
+    for i in range(n) :
+        vp.append((countFrequency(string, string[i]), string[i]));
+    vp.sort();
+    for i in range(len(vp)) :
+        print(vp[i][1],end="");
+if __name__ == "__main__" :
+    string = "success";
+    sortArr(string);
+    
+ There are N houses. The amount to color each house with Red, Green, Blue colors is given. Write a program to find the minimum amount to paint all houses such that no 2 adjacent houses have the same color.
+    
+    def minCost(costs, N):
+  
+    if (N == 0):
+        return 0
+ 
+    dp = [[0 for i in range(3)] for j in range(3)]
+ 
+    dp[0][0] = costs[0][0]
+    dp[0][1] = costs[0][1]
+    dp[0][2] = costs[0][2]
+ 
+    for i in range(1, N, 1):
+       
+        dp[i][0] = min(dp[i - 1][1], dp[i - 1][2]) + costs[i][0]
+ 
+        dp[i][1] = min(dp[i - 1][0], dp[i - 1][2]) + costs[i][1]
+ 
+       
+        dp[i][2] = min(dp[i - 1][0], dp[i - 1][1]) + costs[i][2]
+ 
+  
+    print(min(dp[N - 1][0], min(dp[N - 1][1],dp[N - 1][2])))
+if __name__ == '__main__':
+    costs = [[14, 2, 11],
+             [11, 14, 5],
+             [14, 3, 10]]
+    N = len(costs)
+     
+    
+    minCost(costs, N)
+     
+   Write a program to generate all binary strings.
+[Example: Input N=2 output =00,01,10,11]
+
+
+def printTheArray(arr, n):
+ 
+    for i in range(0, n):
+        print(arr[i], end = " ")
+     
+    print()
+def generateAllBinaryStrings(n, arr, i):
+ 
+    if i == n:
+        printTheArray(arr, n)
+        return
+  
+    arr[i] = 0
+    generateAllBinaryStrings(n, arr, i + 1)
+ 
+    arr[i] = 1
+    generateAllBinaryStrings(n, arr, i + 1)
+if __name__ == "__main__":
+ 
+    n = 2
+    arr = [None] * n
+    generateAllBinaryStrings(n, arr, 0)
+    
+    Find the index of the element in the array such that the sum of all the elements left to the index is equal to the sum of all the elements right to the index.
+    
+    def findElement(arr, n) :
+    prefixSum = [0] * n
+    prefixSum[0] = arr[0]
+    for i in range(1, n) :
+        prefixSum[i] = prefixSum[i - 1] + arr[i]
+    suffixSum = [0] * n
+    suffixSum[n - 1] = arr[n - 1]
+    for i in range(n - 2, -1, -1) :
+        suffixSum[i] = suffixSum[i + 1] + arr[i]
+    for i in range(1, n - 1, 1) :
+        if prefixSum[i] == suffixSum[i] :
+            return arr[i]
+         
+    return -1
+if __name__ == "__main__" :
+     
+    arr = [ 1, 4, 2, 5]
+    n = len(arr)
+    print(findElement(arr, n))
+    
+    Write a program to check if a string is lapindrome or not.
+    
+    s=input()
+s1,s2='',''
+if(len(s)%2==0):
+    s1=s[:len(s)//2] 
+    s2=s[len(s)//2:]
+else: 
+    s1=s[:len(s)//2]
+    s2=s[len(s)//2+1:]
+l1=list(s1)
+l2=list(s2)
+l1.sort()
+l2.sort()
+s1=str(l1)
+s2=str(l2)
+if(s1==s2):
+    print('YES')
+else: 
+    print('NO')
+    
+    Print all the valid parentheses combinations for the given number.
+[Example: Input N=2 output: (()), () () ]
+
+def printParenthesis(str, n):
+    if(n > 0):
+        _printParenthesis(str, 0,
+                          n, 0, 0);
+    return;
+ 
+def _printParenthesis(str, pos, n,
+                      open, close):
+     
+    if(close == n):
+        for i in str:
+            print(i, end = "");
+        print();
+        return;
+    else:
+        if(open > close):
+            str[pos] = '}';
+            _printParenthesis(str, pos + 1, n,
+                              open, close + 1);
+        if(open < n):
+            str[pos] = '{';
+            _printParenthesis(str, pos + 1, n,
+                              open + 1, close);
+n = 2;
+str = [""] * 2 * n;
+printParenthesis(str, n);
+ 
+ 
+ There are N players which are playing a tournament. We need to find the maximum number of games the winner can play. In this tournament, two players are allowed to play against each other only if the difference between games played by them is not 
+more than one.
+
+def maxGameByWinner(N):
+    dp = [0 for i in range(N)]
+     
+    dp[0] = 1
+    dp[1] = 2
+    i = 1
+    while dp[i] <= N:
+        i = i + 1
+        dp[i] = dp[i - 1] + dp[i - 2]
+    return (i - 1)
+N = 10
+print(maxGameByWinner(N))
+
+You have a given a list of words. Write a program to return a list of sets of anagrams.
+[Ex: Input= Below, Elbow, Low output= {Elbow, Below}]
+
+def groupAnagrams(words):
+    anagrams = []
+    if not words:
+        return anagrams
+    nums = [''.join(sorted(word)) for word in words]
+    d = {}
+    for i, e in enumerate(nums):
+        d.setdefault(e, []).append(i)
+    for index in d.values():
+        collection = tuple(words[i] for i in index)
+        if len(collection) > 1:
+            anagrams.append(collection)
+ 
+    return anagrams
+ 
+if __name__ == '__main__':
+
+    words = ["cat", "dog", "tac", "god", "act"]
+ 
+    anagrams = groupAnagrams(words)
+    for anagram in anagrams:
+        print(anagram)
+        
+ Given a pattern containing only Ns and Ms. N represent ascending and M represent descending, Each character (M or N) needs to display a sequence of numbers (2 numbers) explaining the ascending and descending order (for ex: 21 ->represents the ascending -
+>M). The second character in the patterns takes the last digit from the first character the builds the sequence and so on. [Input: MNM Output: 2143]
+
+def PrintMinNumberForPattern(arr):
+    curr_max = 0
+    last_entry = 0
+    i = 0
+ 
+    while i < len(arr):
+        noOfNextM = 0
+        if arr[i] == "N":
+            j = i + 1
+            while j < len(arr) and arr[j] == "M":
+                noOfNextM += 1
+                j += 1
+            if i == 0:
+                curr_max = noOfNextM + 2
+                last_entry += 1
+                print("", last_entry, end = "")
+                print("", curr_max, end = "")
+ 
+                last_entry = curr_max
+            else:
+                curr_max += noOfNextM + 1
+ 
+                last_entry = curr_max
+                print("", last_entry, end = "")
+ 
+            for k in range(noOfNextM):
+                last_entry -= 1
+                print("", last_entry, end = "")
+                i += 1
+        elif arr[i] == "M":
+            if i == 0:
+ 
+                j = i + 1
+                while j < len(arr) and arr[j] == "M":
+                    noOfNextM += 1
+                    j += 1
+                curr_max = noOfNextM + 2
+ 
+                print("", curr_max, curr_max - 1, end = "")
+ 
+                last_entry = curr_max - 1
+            else:
+                print("", last_entry - 1, end = "")
+                last_entry -= 1
+        i += 1
+    print()
+if __name__ == "__main__":
+    PrintMinNumberForPattern("MN")
+   
